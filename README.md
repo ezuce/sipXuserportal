@@ -1,4 +1,4 @@
-sipXuser
+sipXuserportal
 ========
 
-sipXuser
+sipXuserportal
