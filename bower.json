@@ -1,0 +1,26 @@
+{
+  "name": "webchat",
+  "version": "0.0.0",
+  "dependencies": {
+    "json3": "*",
+    "es5-shim": "*",
+    "underscore": "*",
+    "Latest-Strophe.js": "*",
+    "angular": "*",
+    "angular-cookies": "*",
+    "angular-sanitize": "*",
+    "angular-route": "*",
+    "angular-animate": "*",
+    "angular-local-storage": "*",
+    "bootstrap": "*",
+    "animate.css": "*",
+    "notify.js": "*",
+    "angular-xml": "*",
+    "angular-dragndrop": "*",
+    "angular-strap": "~2.0.0"
+  },
+  "devDependencies": {
+    "angular-mocks": "*",
+    "angular-scenario": "*"
+  }
+}

@@ -1,0 +1,90 @@
+  <div class="sticky-wrapper">
+  <div class="row profile-bar-chat">
+    <div class="col-sm-10 col-md-11">
+      <span>MY PROFILE</span>
+    </div>
+    <div class="col-sm-2 col-md-1">
+      <button class="btn btn-link pull-right"
+        data-ng-click="chat.showDefault()">
+        <i class="icon-close"></i>
+      </button>
+    </div>
+  </div>
+  <div data-resize class="row my-profile">
+
+    <div class="row">
+      <div class="col-xs-6">
+
+        <div class="entry clearfix">
+          <div class="entry-photo pull-left">
+            <img data-ng-src="{{ myprofile.info.profile.avatar }}">
+          </div>
+          <div class="pull-left">
+            <div class="entry-name">
+              {{ myprofile.info.profile.firstName + ' ' + myprofile.info.profile.lastName || myprofile.info.profile.imId }}
+            </div>
+            <div class="entry-loc">
+              {{ myprofile.info.profile.location }}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <form class="form-horizontal col-sm-12" role="form" name="profileForm"
+      data-ng-if="myprofile.info.profile">
+
+      <div class="row">
+
+        <div class="col-xs-6">
+          <div class="form-groups clearfix">
+            <div class="form-group clearfix"
+              data-ng-repeat="(key, val) in myprofile.info.profile"
+              data-ng-if="$even"
+              data-ng-class="{ even: $even, odd: $odd }">
+              <div data-tree data-tree-key="key" data-tree-val="val" data-tree-input data-tree-parent="myprofile.info.profile"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-6">
+          <div class="form-groups clearfix">
+            <div class="form-group clearfix"
+              data-ng-repeat="(key, val) in myprofile.info.profile"
+              data-ng-if="$odd"
+              data-ng-class="{ even: $even, odd: $odd }">
+              <div data-tree data-tree-key="key" data-tree-val="val" data-tree-input data-tree-parent="myprofile.info.profile"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="my-profile-btn-row">
+        <button class="btn btn-default"
+          data-ng-disabled="!profileForm.$dirty"
+          data-ng-click="myprofile.init(); profileForm.$setPristine();">
+          Cancel
+        </button>
+        <button class="btn btn-info" data-ng-click="myprofile.save()"
+          data-ng-disabled="!profileForm.$dirty">
+          Save
+        </button>
+      </div>
+    </form>
+
+    <div class="spinner-wrapper animated fade"
+      data-ng-show="!myprofile.info.profile">
+      <div class="spinner small"></div>
+    </div>
+
+  </div>
+  </div>
+  <div class="sticky">
+    <div class="row bottom-bar">
+      <div class="input-group pull-left">
+      </div><!-- /input-group -->
+    </div>
+  </div>
+</div>

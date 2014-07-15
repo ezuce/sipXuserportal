@@ -1,0 +1,58 @@
+<h5 class="main-left-title">CONTACTS</h5>
+<div>
+  <div data-ng-repeat="entry in (filtered = (phonebook.main | orderBy:'name' )) track by $index">
+    <div
+      data-drag
+      data-ng-model="entry"
+      data-ng-click="showEntry(entry)"
+      data-ng-class="{first: $first}"
+      class="entry-container clearfix">
+      <div class="entry-photo pull-left">
+        <img data-ng-src="{{ entry.avatar }}">
+      </div>
+      <div class="entry-name pull-left">
+        <span class="entry-name-big">{{ entry.name }}</span>
+        <span class="entry-loc">{{ entry['contact-information'].location || '-' }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="rooms-modal roster-modal animated fade"
+  data-ng-show="muc.conf.modal">
+  <div class="clearfix">
+    <h5 class="main-left-title pull-left">CONTACTS / PROFILE</h5>
+    <div
+      data-ng-click="hideEntry()"
+      class="pull-right close-button">
+      <i class="icon-close"></i>
+    </div>
+  </div>
+  <div class="rooms-modal-wrapper">
+    <div class="roster-modal-mini-profile clearfix">
+      <div class="entry-photo pull-left">
+        <img data-ng-src="{{ entry.profile.avatar }}">
+      </div>
+      <div class="entry-name pull-left">
+        <span class="entry-name-big">{{ entry.profile.name }}</span>
+        <span class="entry-loc">{{ entry.profile['contact-information'].location || '-' }}</span>
+      </div>
+    </div>
+    <div>
+      <button type="button" class="btn btn-default btn-block"
+        data-ng-click="callDialpad(entry.profile.number)">
+        <i class="icon-presence_on_the_phone"></i>
+        {{ entry.profile.name }} ({{ entry.profile.number }})
+      </button>
+    </div>
+    <div class="roster-modal-vcard">
+      <div class="form-group clearfix"
+        data-ng-repeat="(key, val) in entry.profile['contact-information'] track by $index">
+        <div data-tree data-tree-key="key" data-tree-val="val"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

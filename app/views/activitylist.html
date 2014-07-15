@@ -1,0 +1,29 @@
+<h5 class="main-left-title">ACTIVITY LIST</h5>
+<div class="entry-wrapper animated fade"
+  data-ng-repeat="entry in (filtered = (activityList.main | orderBy: '-timestamp' )) track by $index">
+  <div
+    data-ng-click="selectConversation(entry)"
+    class="entry-container clearfix">
+    <div class="entry-photo pull-left">
+      <img data-ng-show="!entry.type" data-vcard-photo="activityList.main">
+      <i data-ng-show="entry.type" class="icon-group-chat big-grey"></i>
+      <span data-ng-show="!entry.type" class="entry-status {{ entry.show || 'offline' }}"></span>
+    </div>
+    <div class="entry-name pull-left">
+      <span class="entry-name-big">
+        {{ entry.name }}
+        <span class="label label-default animated fade"
+          data-ng-if="entry.type && !entry.connected">Click to connect</span>
+      </span>
+      <span class="entry-msg">{{ entry.last_message }}</span>
+    </div>
+    <div class="entry-misc pull-left">
+      <span data-ng-show="(entry.unread !== 0)" class="entry-unread">{{ entry.unread }}</span>
+      <span data-ng-show="(entry.unread === 0)">{{ entry.timestamp | time }}</span>
+    </div>
+  </div>
+  <span class="entry-remove"
+    data-ng-click="removeConversation(entry)">
+    <i class="icon-close"></i>
+  </span>
+</div>
